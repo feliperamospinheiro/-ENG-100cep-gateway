@@ -1,9 +1,15 @@
-# 🏦 100cep Gateway — MVP de Engenharia de Dados
+# 🏦 100cep Gateway
 
 <p align="center">
-  <img src="./logo/100cep_gateway.jpeg" alt="Logo 100cep Gateway" width="260">
+  <img src="./logo/100cep_gateway.png" alt="Logo 100cep Gateway" width="260">
 </p>
 
+A 100cep é uma empresa de infraestrutura de pagamentos borderless (*sem CEP*), especializada em processar pagamentos globais de forma rápida, segura e interoperável.
+Nosso objetivo é permitir transações rápidas, seguras e sem fronteiras — afinal, somos “100 CEP”: sem país, estado ou cidade limitando o fluxo dos pagamentos.
+
+# MVP Engenharia de Dados
+
+O MVP simula o pipeline transacional da 100cep Gateway, incluindo ingestão, processamento, conciliação e chargebacks, seguindo padrões de adquirência e infraestrutura financeira.
 Pipeline de dados construído no Databricks para simular o processamento de pedidos, pagamentos e chargebacks de uma empresa fictícia do setor de pagamentos, a **100cep Gateway**. O MVP segue boas práticas de Data Lakehouse, utilizando Delta Lake, Unity Catalog e a arquitetura **Bronze → Silver → Gold**.
 
 ---
