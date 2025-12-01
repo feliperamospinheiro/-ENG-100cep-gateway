@@ -1,4 +1,9 @@
 # 🏦 100cep Gateway — MVP de Engenharia de Dados
+
+<p align="center">
+  <img src="./logo/100cep_gateway.jpeg" alt="Logo 100cep Gateway" width="260">
+</p>
+
 Pipeline de dados construído no Databricks para simular o processamento de pedidos, pagamentos e chargebacks de uma empresa fictícia do setor de pagamentos, a **100cep Gateway**. O MVP segue boas práticas de Data Lakehouse, utilizando Delta Lake, Unity Catalog e a arquitetura **Bronze → Silver → Gold**.
 
 ---
@@ -152,12 +157,12 @@ Arquivo: `/docs/self_assessment.md`
 # 👨‍💻 Autor
 
 **Felipe Pinheiro**  
-LinkedIn: *[link aqui](https://www.linkedin.com/in/feliperamospinheiro/)*  
-GitHub: *[link aqui](https://github.com/feliperamospinheiro)*
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:felipervmospinheiro@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/feliperamospinheiro)
 
 # Créditos
 
-Dataset: *[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)*
-Autor: Olist & André Sionek
-DOI Citation: *[DOI](https://doi.org/10.34740/kaggle/dsv/195341)*
+Dataset: *[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)*  
+Autor: Olist & André Sionek  
+DOI Citation: *[DOI](https://doi.org/10.34740/kaggle/dsv/195341)*  
 Licença: *[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)*
