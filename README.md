@@ -3,7 +3,7 @@
 <p align="center">
   <img src="./logo/100cep_gateway.png" alt="Logo 100cep Gateway" width="260">
 </p>
-
+git 
 A 100cep é uma empresa de infraestrutura de pagamentos borderless, especializada em processar pagamentos globais de forma rápida, segura e interoperável.
 Nosso objetivo é permitir transações rápidas, seguras e sem fronteiras — afinal, somos “100cep”: sem país, estado ou cidade limitando o fluxo dos pagamentos.
 
@@ -166,16 +166,6 @@ Arquivo: `/docs/self_assessment.md`
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:felipervmospinheiro@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/feliperamospinheiro)
-
-# Créditos
-
-Dataset: *[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)*  
-Autor: Olist & André Sionek  
-DOI Citation: *[DOI](https://doi.org/10.34740/kaggle/dsv/195341)*  
-=======
-LinkedIn: *[link aqui](https://www.linkedin.com/in/feliperamospinheiro/)*  
-
-GitHub: *[link aqui](https://github.com/feliperamospinheiro)*
 
 # Créditos
 
