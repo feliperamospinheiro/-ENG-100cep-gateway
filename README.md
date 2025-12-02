@@ -1,6 +1,6 @@
 # 🏦 100cep Gateway
 
-<p align="center"> <img src="./logo/100cep_gateway.png" alt="Logo 100cep Gateway" width="100%"></p>
+<p align="center"> <img src="./logo/100cep-gateway.png" alt="Logo 100cep Gateway" width="100%"></p>
 
 A 100cep é uma empresa de infraestrutura de pagamentos borderless, especializada em processar pagamentos globais de forma rápida, segura e interoperável.
 Nosso objetivo é permitir transações rápidas, seguras e sem fronteiras — afinal, somos “100cep”: sem país, estado ou cidade limitando o fluxo dos pagamentos.
