@@ -4,7 +4,7 @@
 
 A 100cep Gateway é uma empresa de infraestrutura de pagamentos borderless, especializada em processar pagamentos globais de forma rápida, segura e interoperável.Nosso objetivo é permitir **transações rápidas**, **seguras** e **sem fronteiras** — afinal, somos _100cep_: sem _cidade_, _estado_ ou _país_ limitando o fluxo dos pagamentos.
 
-# Projeto de Engenharia de Dados
+<h1 align="center">Projeto de Engenharia de Dados</h1>
 
 O MVP simula o pipeline transacional da 100cep Gateway, incluindo ingestão, processamento, conciliação e chargebacks, seguindo padrões de adquirência e infraestrutura financeira.
 
@@ -14,7 +14,7 @@ O projeto segue boas práticas de Data Lakehouse, utilizando Delta Lake, Unity C
 
 ---
 
-# 🎯 1. Objetivo do Projeto
+<h1 align="center">🎯 1. Objetivo do Projeto</h1>
 
 Este MVP tem como objetivo construir um pipeline de engenharia de dados completo para:
 
@@ -32,7 +32,7 @@ Todas as perguntas de negócio estão documentadas em:
 
 ---
 
-# 📥 2. Coleta dos Dados
+<h1 align="center">📥 2. Coleta dos Dados</h1>
 
 Os dados utilizados foram obtidos no Kaggle (**Brazilian E-Commerce Public Dataset by Olist**), amplamente usado em estudos e projetos educacionais.
 
@@ -51,7 +51,7 @@ Evidências (screenshots) estão na pasta: `/docs/screenshots/coleta`.
 
 ---
 
-# 🧱 3. Modelagem de Dados
+<h1 align="center">🧱 3. Modelagem de Dados</h1>
 
 Foi adotado um modelo **Lakehouse** com tabelas **flat por conceito**:
 
@@ -87,8 +87,7 @@ Foi criado um **Data Catalog** contendo:
 Arquivo: `/docs/data_catalog.md`
 
 ---
-
-# 🚀 4. Carga (ETL / ELT)
+<h1 align="center">🚀 4. Carga (ETL / ELT)</h1>
 
 A carga foi estruturada em três passos principais:
 
@@ -113,8 +112,7 @@ Documentação do ETL: `/docs/etl_documentation.md`
 Evidências de execução: `/docs/screenshots/carga`
 
 ---
-
-# 📊 5. Análises Realizadas
+<h1 align="center"># 📊 5. Análises Realizadas</h1>
 
 ## 🔍 a) Qualidade dos Dados
 Foi feita uma análise de:
@@ -146,8 +144,7 @@ As respostas detalhadas estão em:
 📄 `/docs/analysis.md`
 
 ---
-
-# 📝 6. Autoavaliação
+<h1 align="center">📝 6. Autoavaliação</h1>
 
 Discussão final sobre:
 
