@@ -112,7 +112,7 @@ Documentação do ETL: `/docs/etl_documentation.md`
 Evidências de execução: `/docs/screenshots/carga`
 
 ---
-<h1 align="center"># 📊 5. Análises Realizadas</h1>
+<h1 align="center">📊 5. Análises Realizadas</h1>
 
 ## 🔍 a) Qualidade dos Dados
 Foi feita uma análise de:
