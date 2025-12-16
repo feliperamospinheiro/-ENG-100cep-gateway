@@ -5,11 +5,11 @@
 
 | Coluna | Tipo | Descrição | Description |
 | ------ | ---- | --------- | ----------- |
-| chargeback_id | Identificador único para cada pedido de chargeback, composto por 13 caracteres alfanuméricos em minúsculas. | Unique identifier for each chargeback request, consisting of 13 alphanumeric characters in lowercase. |
-| motivo_chargeback | Motivo por trás da solicitação de chargeback, que pode incluir fraudes, produtos não recebidos, entre outros. | Reason for the chargeback request, which may include fraud, non-receipt of products, among other causes. |
-| status_chargeback | Status atual da solicitação de chargeback, indicando seu estágio de progresso.  | Current status of the chargeback request, indicating its progress stage.|
-| resposta_emitente | Resposta fornecida pelo emissor do cartão em relação à solicitação de chargeback. | Response provided by the card issuer regarding the chargeback request. |
-| resposta_adquirente | Resposta fornecida pelo adquirente em relação à solicitação de chargeback. | Response provided by the acquirer regarding the chargeback request. |
+| chargeback_id | string | Identificador único para cada pedido de chargeback, composto por 13 caracteres alfanuméricos em minúsculas. | Unique identifier for each chargeback request, consisting of 13 alphanumeric characters in lowercase. |
+| motivo_chargeback | string | Motivo por trás da solicitação de chargeback, que pode incluir fraudes, produtos não recebidos, entre outros. | Reason for the chargeback request, which may include fraud, non-receipt of products, among other causes. |
+| status_chargeback | string | Status atual da solicitação de chargeback, indicando seu estágio de progresso.  | Current status of the chargeback request, indicating its progress stage.|
+| resposta_emitente | string | Resposta fornecida pelo emissor do cartão em relação à solicitação de chargeback. | Response provided by the card issuer regarding the chargeback request. |
+| resposta_adquirente | string | Resposta fornecida pelo adquirente em relação à solicitação de chargeback. | Response provided by the acquirer regarding the chargeback request. |
 
 ### dim_clientes
 | Coluna | Tipo | Descrição | Description |
