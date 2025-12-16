@@ -1,8 +1,8 @@
-# Catálogo de Dados — 100cep Gateway
+
+<h1 align="center">Catálogo de Dados</h1>
 ---
 
-# 🥇 Gold
-
+### dim_chargebacks
 | Coluna | Tipo | Descrição | Description |
 | ------ | ---- | --------- | ----------- |
 | chargeback_id | string | Identificador único para cada pedido de chargeback, composto por 13 caracteres alfanuméricos em minúsculas. | Unique identifier for each chargeback request, consisting of 13 alphanumeric characters in lowercase. |
