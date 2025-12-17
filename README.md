@@ -1,4 +1,4 @@
-<h1 align="center">100cep Gateway</h1>
+<h1 align="center">MVP de Engenharia de Dados</h1>
 
 <p align="center">
   <a href="https://shields.io/">
@@ -27,13 +27,6 @@
   </a>
 </p>
 
-
-<p align="center"> <img src="./docs/images/logo/100cep-gateway.png" alt="Logo 100cep Gateway" width="100%"></p>
-
-A 100cep Gateway é uma empresa de infraestrutura de pagamentos borderless, especializada em processar pagamentos globais de forma rápida, segura e interoperável.Nosso objetivo é permitir **transações rápidas**, **seguras** e **sem fronteiras** — afinal, somos _100cep_: sem _cidade_, _estado_ ou _país_ limitando o fluxo dos pagamentos.
-
-<h2 align="center">Projeto de Engenharia de Dados</h2>
-
 O MVP simula o pipeline transacional da 100cep Gateway, incluindo ingestão, processamento, conciliação e chargebacks, seguindo padrões de adquirência e infraestrutura financeira.
 
 Pipeline de dados construído no Databricks para simular o processamento de pedidos, pagamentos e chargebacks de uma empresa fictícia do setor de pagamentos, a **100cep Gateway**. 
@@ -41,7 +34,13 @@ Pipeline de dados construído no Databricks para simular o processamento de pedi
 O projeto segue boas práticas de Data Lakehouse, utilizando Delta Lake, Unity Catalog e a arquitetura **Bronze → Silver → Gold**.
 
 ---
+<h1 align="center">100cep Gateway</h1>
 
+<p align="center"> <img src="./docs/images/logo/100cep-gateway.png" alt="Logo 100cep Gateway" width="100%"></p>
+
+A 100cep Gateway é uma empresa de infraestrutura de pagamentos borderless, especializada em processar pagamentos globais de forma rápida, segura e interoperável.Nosso objetivo é permitir **transações rápidas**, **seguras** e **sem fronteiras** — afinal, somos _100cep_: sem _cidade_, _estado_ ou _país_ limitando o fluxo dos pagamentos.
+
+---
 <h2 align="center">Objetivo do Projeto</h2>
 
 Este MVP tem como objetivo construir um pipeline de engenharia de dados completo para:
