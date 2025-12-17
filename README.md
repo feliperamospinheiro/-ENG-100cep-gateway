@@ -1,5 +1,14 @@
 <h1 align="center">100cep Gateway</h1>
 
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow.svg)
+![Engenharia de Dados](https://img.shields.io/badge/Engenharia%20de%20Dados-Data%20Engineering-blue)
+![Databricks](https://img.shields.io/badge/Databricks-Data%20Platform-orange?logo=databricks&logoColor=white)
+![Apache Spark](https://img.shields.io/badge/Apache%20Spark-Spark-orange?logo=apachespark&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-Query%20Language-blue?logo=postgresql&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-purple?logo=pandas&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-Data%20Visualization-lightblue)
+![GeoPandas](https://img.shields.io/badge/GeoPandas-Geospatial%20Data-green)
+
 <p align="center"> <img src="./docs/images/logo/100cep-gateway.png" alt="Logo 100cep Gateway" width="100%"></p>
 
 A 100cep Gateway é uma empresa de infraestrutura de pagamentos borderless, especializada em processar pagamentos globais de forma rápida, segura e interoperável.Nosso objetivo é permitir **transações rápidas**, **seguras** e **sem fronteiras** — afinal, somos _100cep_: sem _cidade_, _estado_ ou _país_ limitando o fluxo dos pagamentos.
@@ -14,7 +23,7 @@ O projeto segue boas práticas de Data Lakehouse, utilizando Delta Lake, Unity C
 
 ---
 
-<h2 align="center">🎯 1. Objetivo do Projeto</h2>
+<h2 align="center">Objetivo do Projeto</h2>
 
 Este MVP tem como objetivo construir um pipeline de engenharia de dados completo para:
 
@@ -32,7 +41,7 @@ Todas as perguntas de negócio estão documentadas em:
 
 ---
 
-<h2 align="center">📥 2. Coleta dos Dados</h2>
+<h2 align="center">Coleta dos Dados</h2>
 
 Os dados utilizados foram obtidos no Kaggle (**Brazilian E-Commerce Public Dataset by Olist**), amplamente usado em estudos e projetos educacionais.
 
@@ -51,7 +60,7 @@ Evidências (screenshots) estão na pasta: `/docs/screenshots/coleta`.
 
 ---
 
-<h2 align="center">🧱 3. Modelagem de Dados</h2>
+<h2 align="center">Modelagem de Dados</h2>
 
 Foi adotado um modelo **Lakehouse** com tabelas **flat por conceito**:
 
@@ -87,7 +96,7 @@ Foi criado um **Data Catalog** contendo:
 Arquivo: `/docs/data_catalog.md`
 
 ---
-<h2 align="center">🚀 4. Carga (ETL / ELT)</h2>
+<h2 align="center">Carga (ETL / ELT)</h2>
 
 A carga foi estruturada em três passos principais:
 
@@ -112,7 +121,7 @@ Documentação do ETL: `/docs/etl_documentation.md`
 Evidências de execução: `/docs/screenshots/carga`
 
 ---
-<h2 align="center">📊 5. Análises Realizadas</h2>
+<h2 align="center">Análises Realizadas</h2>
 
 ## 🔍 a) Qualidade dos Dados
 Foi feita uma análise de:
@@ -142,7 +151,7 @@ As respostas detalhadas estão em:
 📄 `/docs/analysis.md`
 
 ---
-<h2 align="center">📝 6. Autoavaliação</h2>
+<h2 align="center">Autoavaliação</h2>
 
 Discussão final sobre:
 
@@ -155,14 +164,14 @@ Arquivo: `/docs/self_assessment.md`
 
 ---
 
-# 👨‍💻 Autor
+<h2 align="center">Autor</h2>
 
 **Felipe Pinheiro**  
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:felipervmospinheiro@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/feliperamospinheiro)
 
-# Créditos
+<h2 align="center">Creditos</h2>
 
 Dataset: *[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)*
 
