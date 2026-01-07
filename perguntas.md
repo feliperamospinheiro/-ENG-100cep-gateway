@@ -1,92 +1,92 @@
-<h1 align="center">Perguntas de Negócio — 100cep Gateway</h1>
+<h1 align="center">Business Questions — 100cep Gateway</h1>
 
-Este documento lista todas as perguntas de negócio a serem respondidas pelo MVP de Engenharia de Dados. As perguntas estão organizadas por categoria e visam fornecer insights estratégicos para a operação da 100cep Gateway.
-
----
-
-## 📊 Categorias de Análise
-
-### 1️⃣ Comportamento de Pagamento
-**Objetivo**: Entender as preferências de pagamento dos clientes e identificar padrões de uso.
-
-**Pergunta 1**: Qual o método de pagamento mais utilizado pelos clientes da 100cep Gateway?
-
-**Contexto**: Esta análise permite identificar os métodos de pagamento mais populares entre os clientes, auxiliando em decisões estratégicas sobre:
-- Negociação de taxas com adquirentes
-- Priorização de integrações com bandeiras
-- Investimento em infraestrutura de processamento
-- Estratégias de marketing focadas em métodos específicos
+This document lists all business questions to be answered by the Data Engineering MVP. The questions are organized by category and aim to provide strategic insights for 100cep Gateway's operation.
 
 ---
 
-### 2️⃣ Performance Financeira
-**Objetivo**: Monitorar a evolução do faturamento e identificar sazonalidades.
+## 📊 Analysis Categories
 
-**Pergunta 2**: Qual o histórico de faturamento do ano de 2017?
+### 1️⃣ Payment Behavior
+**Objective**: Understand customers' payment preferences and identify usage patterns.
 
-**Contexto**: O acompanhamento do faturamento ao longo do tempo permite:
-- Identificar períodos sazonais de alta/baixa demanda
-- Planejar recursos operacionais
-- Projetar crescimento futuro
-- Avaliar efetividade de campanhas comerciais
+**Question 1**: What is the most used payment method by 100cep Gateway's customers?
 
----
-
-### 3️⃣ Risco e Chargebacks
-**Objetivo**: Avaliar o nível de exposição a chargebacks e desenvolver estratégias de mitigação.
-
-**Pergunta 3**: Qual a proporção de pedidos com e sem solicitação de chargeback?
-
-**Contexto**: Compreender a taxa de chargeback é fundamental para:
-- Avaliar o risco operacional da gateway
-- Implementar regras de antifraude
-- Provisionar reservas financeiras
-- Negociar termos com adquirentes
+**Context**: This analysis makes it possible to identify the most popular payment methods among customers, supporting strategic decisions about:
+- Negotiation of fees with acquirers
+- Prioritization of integrations with card brands
+- Investment in processing infrastructure
+- Marketing strategies focused on specific methods
 
 ---
 
-**Pergunta 4**: Quais métodos de pagamento têm maior risco de chargeback?
+### 2️⃣ Financial Performance
+**Objective**: Monitor the evolution of revenue and identify seasonality.
 
-**Contexto**: A análise de risco por método de pagamento possibilita:
-- Definir regras de análise de risco diferenciadas
-- Ajustar precificação (MDR) por método
-- Implementar verificações adicionais para métodos de alto risco
-- Educar vendedores sobre práticas seguras
+**Question 2**: What is the revenue history for the year 2017?
 
----
-
-### 4️⃣ Análise Geográfica
-**Objetivo**: Identificar regiões com maior risco e oportunidades de expansão.
-
-**Pergunta 5**: Quais estados apresentam as maiores taxas de chargeback?
-
-**Contexto**: A distribuição geográfica de chargebacks permite:
-- Identificar regiões de maior risco
-- Implementar regras de análise por localização
-- Planejar estratégias regionais de expansão
-- Compreender padrões de fraude por região
+**Context**: Tracking revenue over time allows you to:
+- Identify seasonal periods of high/low demand
+- Plan operational resources
+- Project future growth
+- Assess the effectiveness of commercial campaigns
 
 ---
 
-## 🎯 Aplicações Práticas
+### 3️⃣ Risk and Chargebacks
+**Objective**: Assess the level of exposure to chargebacks and develop mitigation strategies.
 
-As respostas a essas perguntas serão utilizadas para:
+**Question 3**: What is the proportion of orders with and without chargeback requests?
 
-1. **Dashboard Executivo**: Visualização consolidada dos principais KPIs
-2. **Alertas Automáticos**: Notificações quando métricas ultrapassarem limites
-3. **Modelo Preditivo**: Base para machine learning em prevenção de fraudes
-4. **Relatórios Regulatórios**: Dados para compliance e auditoria
-5. **Business Intelligence**: Insights para tomada de decisão estratégica
+**Context**: Understanding the chargeback rate is essential to:
+- Assess the operational risk of the gateway
+- Implement antifraud rules
+- Provision financial reserves
+- Negotiate terms with acquirers
 
 ---
 
-## 📈 Camada de Dados
+**Question 4**: Which payment methods have the highest chargeback risk?
 
-As análises serão realizadas utilizando as tabelas da **camada Gold**:
-- `fato_transacoes`: Dados transacionais consolidados
-- `dim_chargebacks`: Informações sobre contestações
-- `dim_geolocalizacao`: Dados geográficos para análise regional
-- `dim_data`: Dimensão temporal para análises históricas
-- `dim_clientes` e `dim_vendedores`: Perfis de clientes e vendedores
+**Context**: Risk analysis by payment method makes it possible to:
+- Define differentiated risk analysis rules
+- Adjust pricing (MDR) by method
+- Implement additional checks for high-risk methods
+- Educate sellers on safe practices
+
+---
+
+### 4️⃣ Geographic Analysis
+**Objective**: Identify regions with higher risk and expansion opportunities.
+
+**Question 5**: Which states have the highest chargeback rates?
+
+**Context**: The geographic distribution of chargebacks makes it possible to:
+- Identify higher-risk regions
+- Implement analysis rules by location
+- Plan regional expansion strategies
+- Understand fraud patterns by region
+
+---
+
+## 🎯 Practical Applications
+
+The answers to these questions will be used for:
+
+1. **Executive Dashboard**: Consolidated visualization of key KPIs
+2. **Automatic Alerts**: Notifications when metrics exceed thresholds
+3. **Predictive Model**: Basis for machine learning in fraud prevention
+4. **Regulatory Reports**: Data for compliance and audit
+5. **Business Intelligence**: Insights for strategic decision-making
+
+---
+
+## 📈 Data Layer
+
+The analyses will be carried out using tables from the **Gold layer**:
+- `fato_transacoes`: Consolidated transactional data
+- `dim_chargebacks`: Information about disputes
+- `dim_geolocalizacao`: Geographic data for regional analysis
+- `dim_data`: Time dimension for historical analyses
+- `dim_clientes` and `dim_vendedores`: Customer and seller profiles
 
 ---

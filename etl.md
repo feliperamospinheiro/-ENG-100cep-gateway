@@ -1,82 +1,82 @@
-<h1 align="center">Documentação do ETL</h1>
+<h1 align="center">ETL Documentation</h1>
 
-Este documento descreve o processo de ETL do projeto **100cep Gateway**, estruturado na arquitetura de camadas **Bronze, Silver e Gold** sobre o Unity Catalog do Databricks, utilizando o dataset público de e‑commerce brasileiro da Olist e um dataset complementar de chargebacks.
+This document describes the ETL process of the **100cep Gateway** project, structured in the **Bronze, Silver and Gold** layered architecture on Databricks Unity Catalog, using the public Brazilian e-commerce dataset from Olist and a complementary chargebacks dataset.
 
 ***
 
-## Visão geral do ambiente
+## Environment Overview
 
-O pipeline segue o padrão de arquitetura *medallion*, com dados organizados em camadas progressivas de refinamento (**Bronze → Silver → Gold**) para melhorar qualidade, governança e usabilidade analítica.
-A gestão de dados, permissões e linhagem é feita via Unity Catalog, usando a convenção `catalog.schema.table` e separando schemas por camada (`staging`, `bronze`, `silver` e `gold`).
+The pipeline follows the *medallion* architecture pattern, with data organized in progressively refined layers (**Bronze → Silver → Gold**) to improve quality, governance and analytical usability.
+Data management, permissions and lineage are handled via Unity Catalog, using the `catalog.schema.table` convention and separating schemas by layer (`staging`, `bronze`, `silver` and `gold`).
 
-### Catálogo e schemas
+### Catalog and Schemas
 
-- Catálogo: `100cep_gateway`.
+- Catalog: `100cep_gateway`.
 - Schemas:
-    - `staging`: recepção inicial de arquivos e volumes.
-    - `bronze`: tabelas *raw* em formato Delta.
-    - `silver`: dados limpos, padronizados e integrados.
-    - `gold`: modelo analítico (fato e dimensões) pronto para consumo.
+    - `staging`: initial reception of files and volumes.
+    - `bronze`: raw tables in Delta format.
+    - `silver`: cleaned, standardized and integrated data.
+    - `gold`: analytical model (fact and dimensions) ready for consumption.
 
 ***
 
-## Preparação do ambiente: [01_preparacao](.databricks/pipeline/notebooks/01_preparacao.ipynb)
+## Environment Preparation: [01_preparacao](.databricks/pipeline/notebooks/01_preparacao.ipynb)
 
-O script de preparação cria e/ou recria o catálogo e schemas, garantindo um ambiente limpo para execução do pipeline.
-Antes de criar, o processo remove (quando existente) o catálogo e seus schemas, evitando resíduos de execuções anteriores que possam impactar a consistência dos dados.
+The preparation script creates and/or recreates the catalog and schemas, ensuring a clean environment for pipeline execution.
+Before creating them, the process drops (when existing) the catalog and its schemas, avoiding leftovers from previous runs that could impact data consistency.
 
-**Responsabilidades principais**
+**Main Responsibilities**
 
-- Criar o catálogo `100cep_gateway`.
-- Criar os schemas `staging`, `bronze`, `silver` e `gold`.
-- Garantir que todos os objetos posteriores (volumes, tabelas, views) sejam criados neste catálogo.
-
-***
-
-## Ingestão de dados e staging: [02_download](.databricks/pipeline/notebooks/02_download.ipynb)
-
-Nesta etapa é feita a ingestão física dos arquivos de dados para o ambiente Databricks, utilizando volumes do Unity Catalog para armazenamento centralizado.
-
-### Volume e datasets
-
-- Criação de um volume chamado `imdb` no schema `staging` para armazenar os arquivos de dados do projeto.
-- Instalação e uso da biblioteca `kagglehub` para download direto de datasets hospedados no Kaggle.
-
-
-### Fontes de dados
-
-- Dataset principal: **Brazilian E‑Commerce Public Dataset by Olist** (pedidos, pagamentos, produtos, clientes, vendedores, entregas e avaliações).
-- Dataset complementar: `datasets/ai_dataset/chargebacks_dataset.csv`, simulando chargebacks associados a transações de e‑commerce.
-
-
-### Fluxo de staging
-
-- Download do dataset Olist via `kagglehub`.
-- Cópia dos arquivos CSV baixados para o volume `imdb` no schema `staging`, garantindo governança e disponibilidade dos dados para as próximas camadas.
+- Create the `100cep_gateway` catalog.
+- Create the `staging`, `bronze`, `silver` and `gold` schemas.
+- Ensure that all subsequent objects (volumes, tables, views) are created in this catalog.
 
 ***
 
-## Camada Bronze — Dados raw estruturados: [03_bronze](.databricks/pipeline/notebooks/03_bronze.ipynb)
+## Data Ingestion and Staging: [02_download](.databricks/pipeline/notebooks/02_download.ipynb)
 
-A camada **Bronze** realiza a ingestão inicial dos arquivos CSV para tabelas Delta, preservando a granularidade e o conteúdo dos dados originais, mas já em estrutura tabular padronizada.
+In this step, the physical ingestion of data files into the Databricks environment is carried out, using Unity Catalog volumes for centralized storage.
 
-### Objetivo da camada Bronze
+### Volume and Datasets
 
-- Carregar todos os arquivos CSV do diretório de staging para tabelas Delta.
-- Manter o formato mais próximo do original, garantindo rastreabilidade total da origem dos dados.
-- Adotar nomenclatura consistente com sufixo `_raw` para indicar dados brutos.
-
-
-### Regras de ingestão
-
-- Leitura automatizada de todos os arquivos no diretório de staging.
-- Uso de cabeçalho e separador adequado ao padrão dos CSVs.
-- Derivação do nome da tabela a partir do nome do arquivo, com regra para garantir prefixo `100cep_` quando necessário.
+- Creation of a volume called `imdb` in the `staging` schema to store the project's data files.
+- Installation and use of the `kagglehub` library for direct download of datasets hosted on Kaggle.
 
 
-### Tabelas Bronze criadas
+### Data Sources
 
-As seguintes tabelas foram criadas no schema `bronze`, cada uma relacionada a um arquivo CSV de origem:
+- Main dataset: **Brazilian E‑Commerce Public Dataset by Olist** (orders, payments, products, customers, sellers, deliveries and reviews).
+- Complementary dataset: `datasets/ai_dataset/chargebacks_dataset.csv`, simulating chargebacks associated with e-commerce transactions.
+
+
+### Staging Flow
+
+- Download of the Olist dataset via `kagglehub`.
+- Copy of the downloaded CSV files to the `imdb` volume in the `staging` schema, ensuring governance and availability of the data for the next layers.
+
+***
+
+## Bronze Layer — Structured Raw Data: [03_bronze](.databricks/pipeline/notebooks/03_bronze.ipynb)
+
+The **Bronze** layer performs the initial ingestion of CSV files into Delta tables, preserving the granularity and content of the original data, but already in a standardized tabular structure.
+
+### Bronze Layer Objective
+
+- Load all CSV files from the staging directory into Delta tables.
+- Keep the format as close as possible to the original, ensuring full traceability of data origin.
+- Adopt consistent naming with `_raw` suffix to indicate raw data.
+
+
+### Ingestion Rules
+
+- Automated reading of all files in the staging directory.
+- Use of header and separator appropriate to the CSV standard.
+- Derivation of the table name from the file name, with a rule to ensure the `100cep_` prefix when necessary.
+
+
+### Bronze Tables Created
+
+The following tables were created in the `bronze` schema, each related to a source CSV file:
 
 - `100cep_customers_raw`
 - `100cep_geolocation_raw`
@@ -89,95 +89,95 @@ As seguintes tabelas foram criadas no schema `bronze`, cada uma relacionada a um
 - `100cep_product_category_name_translation_raw`
 - `100cep_chargebacks_raw`
 
-Essas tabelas formam a base histórica e auditável para as transformações nas camadas Silver e Gold.
+These tables form the historical and auditable base for transformations in the Silver and Gold layers.
 
 ***
 
-## Camada Silver — Dados limpos e integrados: [04_silver](.databricks/pipeline/notebooks/04_silver.ipynb)
+## Silver Layer — Clean and Integrated Data: [04_silver](.databricks/pipeline/notebooks/04_silver.ipynb)
 
-A camada **Silver** aplica regras de limpeza, padronização e enriquecimento sobre as tabelas Bronze, preparando dados prontos para análise e para modelagem dimensional.
+The **Silver** layer applies cleaning, standardization and enrichment rules over the Bronze tables, preparing data ready for analysis and dimensional modeling.
 
-### Transformações principais
+### Main Transformations
 
-- **Padronização de identificadores**
-    - Normalização de chaves de pedidos, clientes, produtos e vendedores (remoção de espaços indesejados, padronização de case) para garantir consistência entre tabelas.
-- **Tratamento de datas e horários**
-    - Conversão de datas e timestamps relevantes para o fuso horário `America/Sao_Paulo`, com formato padronizado para análises temporais.
-- **Normalização de status e tipos**
-    - Tradução e padronização de status de pedidos e tipos de pagamento para português, com remoção de acentuação e uso de letras maiúsculas.
-- **Conversão e tipagem de dados**
-    - Conversão de colunas numéricas (parcelas, preços, fretes, valores totais) para tipos adequados (`INT`, `FLOAT`, `DECIMAL`).
-- **Enriquecimentos**
-    - Extração de prefixos de CEP dos clientes para análises geográficas e segmentações.
+- **Standardization of identifiers**
+    - Normalization of order, customer, product and seller keys (removal of unwanted spaces, case standardization) to ensure consistency across tables.
+- **Handling of dates and times**
+    - Conversion of relevant dates and timestamps to the `America/Sao_Paulo` time zone, with a standardized format for time-based analyses.
+- **Normalization of statuses and types**
+    - Translation and standardization of order statuses and payment types to Portuguese, with removal of accents and use of uppercase letters.
+- **Data typing and conversion**
+    - Conversion of numeric columns (installments, prices, freight, total values) to appropriate types (`INT`, `FLOAT`, `DECIMAL`).
+- **Enrichments**
+    - Extraction of customers' ZIP code prefixes for geographic analyses and segmentations.
 
 
-### Tabelas Silver temáticas
+### Thematic Silver Tables
 
-A partir das tabelas Bronze, foram criadas tabelas consolidadas na camada Silver:
+From the Bronze tables, consolidated tables were created in the Silver layer:
 
-- `100cep_pedidos`: visão de pedidos com status, datas e métricas principais.
-- `100cep_pagamentos`: detalhes de pagamentos, tipos, parcelas e valores.
-- `100cep_itens_pedidos`: itens de cada pedido, com produtos, quantidades e preços.
-- `100cep_clientes`: cadastro de clientes com informações de localização e prefixo de CEP.
+- `100cep_pedidos`: view of orders with status, dates and main metrics.
+- `100cep_pagamentos`: payment details, types, installments and values.
+- `100cep_itens_pedidos`: items of each order, with products, quantities and prices.
+- `100cep_clientes`: customer registry with location information and ZIP code prefix.
 
-Essas tabelas servem como base para as dimensões e fato da camada Gold.
+These tables serve as the base for the dimensions and fact in the Gold layer.
 
 ***
 
-## Camada Gold — Modelo analítico (Star Schema): [05_gold](.databricks/pipeline/notebooks/05_gold.ipynb)
+## Gold Layer — Analytical Model (Star Schema): [05_gold](.databricks/pipeline/notebooks/05_gold.ipynb)
 
-A camada **Gold** materializa o modelo analítico em um **esquema estrela**, com tabelas dimensionais e uma tabela fato central para análise de transações, risco e performance comercial.
+The **Gold** layer materializes the analytical model in a **star schema**, with dimensional tables and a central fact table for analysis of transactions, risk and commercial performance.
 
-### Dimensões
+### Dimensions
 
 - **`dim_clientes`**
-    - Registro único por cliente, com identificador e atributos de localização (incluindo prefixo de CEP).
+    - Single record per customer, with identifier and location attributes (including ZIP code prefix).
 - **`dim_vendedores`**
-    - Dados consolidados de vendedores, permitindo análises de performance e cobertura geográfica.
+    - Consolidated seller data, enabling performance and geographic coverage analyses.
 - **`dim_pagamentos`**
-    - Métodos de pagamento e atributos relacionados, incluindo classificação de risco por tipo de transação.
+    - Payment methods and related attributes, including risk classification by transaction type.
 - **`dim_data`**
-    - Tabela calendário com granularidade diária, contendo data, dia da semana, mês, ano e demais atributos de tempo.
+    - Calendar table with daily granularity, containing date, day of the week, month, year and other time attributes.
 - **`dim_geolocalizacao`**
-    - Informações de cidades e geolocalização válidas e relevantes para o negócio.
+    - Information on cities and geolocation that are valid and relevant to the business.
 - **`dim_chargebacks`**
-    - Detalhamento de chargebacks, com motivos e respostas padronizadas, voltado para análises de risco e fraude.
+    - Detailed chargebacks, with standardized reasons and responses, aimed at risk and fraud analyses.
 
 
-### Tabela fato
+### Fact Table
 
 - **`fato_transacoes`**
-    - Consolida as transações realizadas, integrando pedidos, clientes, vendedores, pagamentos, valores totais e status de pedidos.
-    - É a tabela central para análises de vendas, receita, comportamento do cliente, eficiência operacional e impacto de chargebacks.
+    - Consolidates the transactions carried out, integrating orders, customers, sellers, payments, total values and order statuses.
+    - It is the central table for analyses of sales, revenue, customer behavior, operational efficiency and chargeback impact.
 
-As relações entre fato e dimensões seguem a modelagem de esquema estrela discutida previamente (fato_transacoes ligada a dim_clientes, dim_vendedores, dim_data, dim_geolocalizacao e dim_chargebacks).
+The relationships between fact and dimensions follow the previously discussed star schema modeling (`fato_transacoes` linked to `dim_clientes`, `dim_vendedores`, `dim_data`, `dim_geolocalizacao` and `dim_chargebacks`).
 
 ***
 
-## Linhagem de dados
+## Data Lineage
 
-A linhagem do pipeline pode ser resumida como:
+The lineage of the pipeline can be summarized as:
 
-- **Origem**
-    - Kaggle CSV (dataset Olist) + `datasets/ai_dataset/chargebacks_dataset.csv`.
+- **Source**
+    - Kaggle CSV (Olist dataset) + `datasets/ai_dataset/chargebacks_dataset.csv`.
 - **Bronze (raw)**
-    - Arquivos CSV ingeridos em tabelas `*_raw` no schema `bronze`.
+    - CSV files ingested into `*_raw` tables in the `bronze` schema.
 - **Silver (cleaned)**
-    - Dados limpos, padronizados e enriquecidos em tabelas temáticas (`100cep_pedidos`, `100cep_pagamentos`, `100cep_itens_pedidos`, `100cep_clientes`).
+    - Cleaned, standardized and enriched data in thematic tables (`100cep_pedidos`, `100cep_pagamentos`, `100cep_itens_pedidos`, `100cep_clientes`).
 - **Gold (analytics)**
-    - Modelo dimensional com `dim_clientes`, `dim_vendedores`, `dim_pagamentos`, `dim_data`, `dim_geolocalizacao`, `dim_chargebacks` e `fato_transacoes`.
+    - Dimensional model with `dim_clientes`, `dim_vendedores`, `dim_pagamentos`, `dim_data`, `dim_geolocalizacao`, `dim_chargebacks` and `fato_transacoes`.
 
 ***
 
-## Scripts do pipeline
+## Pipeline Scripts
 
-Os scripts do projeto são organizados de forma sequencial, permitindo execução manual ou orquestração como *job* de ETL:
+The project scripts are organized sequentially, allowing manual execution or orchestration as an ETL job:
 
 
-| Ordem | Script | Descrição |
+| Order | Script | Description |
 | :-- | :-- | :-- |
-| 1 | `./.databricks/pipeline/notebooks/01_preparacao.ipynb` | Criação do catálogo `100cep_gateway` e dos schemas `staging`, `bronze`, `silver` e `gold`. |
-| 2 | `./.databricks/pipeline/notebooks/02_download.ipynb` | Criação de volume, download via `kagglehub` e cópia dos CSV para o volume de staging. |
-| 3 | `./.databricks/pipeline/notebooks/03_bronze.ipynb` | Ingestão dos CSV para tabelas Delta `*_raw` na camada Bronze. |
-| 4 | `./.databricks/pipeline/notebooks/04_silver.ipynb` | Limpeza, padronização, enriquecimento e criação das tabelas Silver temáticas. |
-| 5 | `./.databricks/pipeline/notebooks/05_gold.ipynb` | Criação das dimensões e da `fato_transacoes` na camada Gold. |
+| 1 | `./.databricks/pipeline/notebooks/01_preparacao.ipynb` | Creation of the `100cep_gateway` catalog and the `staging`, `bronze`, `silver` and `gold` schemas. |
+| 2 | `./.databricks/pipeline/notebooks/02_download.ipynb` | Volume creation, download via `kagglehub` and copy of CSVs to the staging volume. |
+| 3 | `./.databricks/pipeline/notebooks/03_bronze.ipynb` | Ingestion of CSVs into `*_raw` Delta tables in the Bronze layer. |
+| 4 | `./.databricks/pipeline/notebooks/04_silver.ipynb` | Cleaning, standardization, enrichment and creation of thematic Silver tables. |
+| 5 | `./.databricks/pipeline/notebooks/05_gold.ipynb` | Creation of dimensions and `fato_transacoes` in the Gold layer. |
