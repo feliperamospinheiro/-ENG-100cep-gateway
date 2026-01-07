@@ -17,7 +17,7 @@ This document contains the **complete documentation** of the data model for the 
 
 ### Relationship Table
 
-| Tabela Origem | Coluna FK | Tabela Destino | Coluna PK | Cardinalidade |
+| Origin Table | Column FK | Destiny Table | Column PK | Cardinalidade |
 |--------------|-----------|----------------|-----------|---------------|
 | **fato_transacoes** | cliente_id | dim_clientes | cliente_id | N:1 |
 | **fato_transacoes** | vendedor_id | dim_vendedores | vendedor_id | N:1 |
@@ -30,7 +30,7 @@ This document contains the **complete documentation** of the data model for the 
 
 ---
 
-<h2 align="center">⚠️ DIMENSION: dim_chargebacks</h2>
+<h2 align="center">dim_chargebacks</h2>
 
 **Type**: Event Dimension  
 **Granularity**: 1 record = 1 chargeback request  
@@ -38,13 +38,13 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_chargebacks.jpg" alt="dim_chargebacks" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| pedido_id | string | Identificador único para cada pedido de chargeback, composto por 13 caracteres alfanuméricos em minúsculas. | Unique identifier for each chargeback request, consisting of 13 alphanumeric characters in lowercase. |
-| motivo_chargeback | string | Reason for the chargeback request, which may include fraud, product not received, defective product, among others. | Reason for the chargeback request, which may include fraud, non-receipt of products, among other causes. |
-| status_chargeback | string | Current status of the chargeback request, indicating its progress stage.  | Current status of the chargeback request, indicating its progress stage.|
-| resposta_emitente | string | Response provided by the card issuer regarding the chargeback request. | Response provided by the card issuer regarding the chargeback request. |
-| resposta_adquirente | string | Response provided by the acquirer regarding the chargeback request. | Response provided by the acquirer regarding the chargeback request. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| pedido_id | string | Unique identifier for each chargeback request, consisting of 13 alphanumeric characters in lowercase. |
+| motivo_chargeback | string | Reason for the chargeback request, which may include fraud, non-receipt of products, defective product, among other causes. |
+| status_chargeback | string | Current status of the chargeback request, indicating its progress stage. |
+| resposta_emitente | string | Response provided by the card issuer regarding the chargeback request. |
+| resposta_adquirente | string | Response provided by the acquirer regarding the chargeback request. |
 
 **Value Domains**:
 - `motivo_chargeback`: Fraud, Product not received, Product defective, Service issue, Unauthorized transaction, etc.
@@ -69,14 +69,14 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_data.jpg" alt="dim_data" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| data_calendario | date | Date when the order was placed. Format: YYYY-MM-DD.| Date when the order was placed. Format: YYYY-MM-DD. |
-| dia | int | Day number corresponding to the date in integer format. | Day number corresponding to the date in integer format. |
-| mes | int | Month number corresponding to the date. | Month number corresponding to the date. |
-| ano | int | Year number corresponding to the date. | Year number corresponding to the date. |
-| nome_dia_semana | string | Weekday name corresponding to the date. | Weekday name corresponding to the date. |
-| nome_mes | string | Month name corresponding to the date. | Month name corresponding to the date. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| data_calendario | date | Date when the order was placed. Format: YYYY-MM-DD. |
+| dia | int | Day number corresponding to the date in integer format. |
+| mes | int | Month number corresponding to the date. |
+| ano | int | Year number corresponding to the date. |
+| nome_dia_semana | string | Weekday name corresponding to the date. |
+| nome_mes | string | Month name corresponding to the date. |
 **Use**:
 - Identification of sellers in transactions
 - Performance analysis by seller
@@ -92,13 +92,13 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_geolocalizacao.jpg" alt="dim_geolocalizacao" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| cep_prefixo | string | The first 5 digits of the ZIP code. | The first 5 digits of the ZIP code. |
-| cidade | string | City name associated with the ZIP code. | City name associated with the ZIP code. |
-| estado | string | Brazilian state abbreviation (two uppercase letters) associated with the ZIP code. | Brazilian state abbreviation (two uppercase letters) associated with the ZIP code. |
-| latitude | string | Geographic coordinate specifying the north-south position. | Geographic coordinate specifying the north-south position. |
-| longitude | string | Geographic coordinate specifying the east-west position. | Geographic coordinate specifying the east-west position. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| cep_prefixo | string | The first 5 digits of the ZIP code. |
+| cidade | string | City name associated with the ZIP code. |
+| estado | string | Brazilian state abbreviation (two uppercase letters) associated with the ZIP code. |
+| latitude | string | Geographic coordinate specifying the north-south position. |
+| longitude | string | Geographic coordinate specifying the east-west position. |
 **Use**:
 - Identification of customers in transactions
 - Geographic analysis (via `cep_prefixo`)
@@ -114,10 +114,10 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_vendedores.jpg" alt="dim_vendedores" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| vendedor_id | string | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. |
-| cep_prefixo | string | The first 5 digits of the seller's postal code. | The first 5 digits of the seller's postal code. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| vendedor_id | string | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. |
+| cep_prefixo | string | The first 5 digits of the seller's postal code. |
 
 <h2 align="center">fato_transacoes</h2>
 
@@ -127,18 +127,18 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/fato_transacoes.jpg" alt="ato_transacoes" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| pedido_id | string | Unique identifier for each transaction, consisting of 13 alphanumeric characters in lowercase. | Unique identifier for each transaction, consisting of 13 alphanumeric characters in lowercase. |
-| cliente_id | string | Unique identifier for each client, consisting of 13 alphanumeric characters in lowercase. | Unique identifier for each client, consisting of 13 alphanumeric characters in lowercase. |
-| vendedor_id | string | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. |
-| data_pedido | date | Date when the order was placed. Format: YYYY-MM-DD. | Date when the order was placed. Format: YYYY-MM-DD.|
-| horario_pedido | date | Time when the order was placed in the format HH:MM:SS.| Time when the order was placed in the format HH:MM:SS. |
-| tipo_pagamento | string | Payment method used for the transaction.| Payment method used for the transaction |
-| valor_transacao | decimal(12,2) | Transaction value in a decimal format with up to 12 digits and 2 decimal places, only positive values. | Transaction value in a decimal format with up to 12 digits and 2 decimal places, only positive values. |
-| preco_total | decimal(16,2) | Total order price, including product price and shipping cost. | Total order price, including product price and shipping cost. |
-| frete_total | decimal(15,2) | Total shipping cost in a decimal format with up to 15 digits and 2 decimal places, only positive values. | Total shipping cost in a decimal format with up to 15 digits and 2 decimal places, only positive values. |
-| status_pedido | string | Current delivery status of the order. | Current delivery status of the order. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| pedido_id | string | Unique identifier for each transaction, consisting of 13 alphanumeric characters in lowercase. |
+| cliente_id | string | Unique identifier for each client, consisting of 13 alphanumeric characters in lowercase. |
+| vendedor_id | string | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. |
+| data_pedido | date | Date when the order was placed. Format: YYYY-MM-DD. |
+| horario_pedido | date | Time when the order was placed in the format HH:MM:SS. |
+| tipo_pagamento | string | Payment method used for the transaction. |
+| valor_transacao | decimal(12,2) | Transaction value in a decimal format with up to 12 digits and 2 decimal places, only positive values. |
+| preco_total | decimal(16,2) | Total order price, including product price and shipping cost. |
+| frete_total | decimal(15,2) | Total shipping cost in a decimal format with up to 15 digits and 2 decimal places, only positive values. |
+| status_pedido | string | Current delivery status of the order. |
 
 **Value Domains**:
 - `tipo_pagamento`: credit_card, boleto, voucher, debit_card
@@ -160,14 +160,14 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_data.jpg" alt="dim_data" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| data_calendario | date | Date when the order was placed. Format: YYYY-MM-DD.| Date when the order was placed. Format: YYYY-MM-DD. |
-| dia | int | Day number corresponding to the date in integer format. | Day number corresponding to the date in integer format. |
-| mes | int | Month number corresponding to the date. | Month number corresponding to the date. |
-| ano | int | Year number corresponding to the date. | Year number corresponding to the date. |
-| nome_dia_semana | string | Weekday name corresponding to the date. | Weekday name corresponding to the date. |
-| nome_mes | string | Month name corresponding to the date. | Month name corresponding to the date. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| data_calendario | date | Date when the order was placed. Format: YYYY-MM-DD. |
+| dia | int | Day number corresponding to the date in integer format. |
+| mes | int | Month number corresponding to the date. |
+| ano | int | Year number corresponding to the date. |
+| nome_dia_semana | string | Weekday name corresponding to the date. |
+| nome_mes | string | Month name corresponding to the date. |
 
 **Value Domains**:
 - `dia`: 1-31
@@ -186,10 +186,10 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_clientes.jpg" alt="dim_clientes" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| cliente_id | string | Unique identifier for each client, consisting of 13 alphanumeric characters in lowercase. | Unique identifier for each client, consisting of 13 alphanumeric characters in lowercase. |
-| cep_prefixo | string | The first 5 digits of the customer postal code. | The first 5 digits of the customer postal code. |
+| Column | Type | Description |
+| ------ | ---- | ----------- |
+| cliente_id | string | Unique identifier for each client, consisting of 13 alphanumeric characters in lowercase. |
+| cep_prefixo | string | The first 5 digits of the customer postal code. |
 
 ---
 
@@ -201,10 +201,10 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_vendedores.jpg" alt="dim_vendedores" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| vendedor_id | string | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. |
-| cep_prefixo | string | The first 5 digits of the seller's postal code. | The first 5 digits of the seller's postal code. |
+Column | Type | Description
+| ------ | ---- | ----------- |
+| vendedor_id | string | Unique identifier for each seller, consisting of 13 alphanumeric characters in lowercase. |
+| cep_prefixo | string | The first 5 digits of the seller's postal code. |
 
 ---
 
@@ -216,13 +216,13 @@ This document contains the **complete documentation** of the data model for the 
 
 <p align="center"> <img src="./images/databricks/dim_geolocalizacao.jpg" alt="dim_geolocalizacao" width="100%"></p>
 
-| Coluna | Tipo | Description | Description | 
-| ------ | ---- | --------- | ----------- | 
-| cep_prefixo | string | The first 5 digits of the ZIP code. | The first 5 digits of the ZIP code. |
-| cidade | string | City name associated with the ZIP code. | City name associated with the ZIP code. |
-| estado | string | Brazilian state abbreviation (two uppercase letters) associated with the ZIP code. | Brazilian state abbreviation (two uppercase letters) associated with the ZIP code. |
-| latitude | string | Geographic coordinate specifying the north-south position. | Geographic coordinate specifying the north-south position. |
-| longitude | string | Geographic coordinate specifying the east-west position. | Geographic coordinate specifying the east-west position. |
+Column | Type | Description
+| ------ | ---- | ----------- |
+| cep_prefixo | string | The first 5 digits of the ZIP code. |
+| cidade | string | City name associated with the ZIP code. |
+| estado | string | Brazilian state abbreviation (two uppercase letters) associated with the ZIP code. |
+| latitude | string | Geographic coordinate specifying the north-south position. |
+| longitude | string | Geographic coordinate specifying the east-west position. |
 
 **Value Domains**:
 - `estado`: Abbreviations of the 27 Brazilian states (AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO)
@@ -293,7 +293,3 @@ This document contains the **complete documentation** of the data model for the 
 - [x] Positive numeric values (except lat/long)
 
 ---
-
-<p align="center">
-    <strong>👍 Catalog maintained and updated by the 100cep Gateway Data Engineering team</strong>
-</p>

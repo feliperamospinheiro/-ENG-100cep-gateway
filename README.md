@@ -54,7 +54,7 @@ The project follows Data Lakehouse best practices, using Delta Lake, Unity Catal
 ---
 <h2 align="center">100cep Gateway</h2>
 
-<p align="center"> <img src="./docs/images/logo/100cep-gateway.png" alt="100cep Gateway Logo" width="100%"></p>
+<p align="center"> <img src="./images/logo/100cep-gateway.png" alt="100cep Gateway Logo" width="100%"></p>
 
 **100cep Gateway** is a fictitious borderless payments infrastructure company, specialized in processing global payments in a fast, secure and interoperable way.
 
@@ -103,7 +103,7 @@ The central focus is to understand:
 > **How can 100cep Gateway monitor, reconcile and anticipate payment and chargeback events using transactional data?**
 
 All business questions are documented in:  
-📄 [/docs/perguntas.md](docs/perguntas.md)
+📄 [/docs/business_questions.md](docs/business_questions.md)
 
 ---
 
@@ -219,7 +219,7 @@ The Gold analyses answer questions such as:
 - **Which states present the highest chargeback rates?**  
 
 Detailed answers are in:  
-📄 [/docs/perguntas.md](docs/perguntas.md)
+📄 [/docs/business_questions.md](docs/business_questions.md)
 
 ### 📊 Main Insights
 - Credit card is the predominant payment method
@@ -237,7 +237,7 @@ Final discussion about:
 - natural limitations of the MVP;  
 - improvements and next steps (streaming, automation, dashboards, monitoring).
 
-📄 **Complete documentation**: [/docs/autoavaliação.md](docs/autoavaliação.md)
+📄 **Complete documentation**: [/docs/self_assessment.md](docs/self_assessment.md)
 
 ---
 

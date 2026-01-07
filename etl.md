@@ -20,7 +20,7 @@ Data management, permissions and lineage are handled via Unity Catalog, using th
 
 ***
 
-## Environment Preparation: [01_preparacao](.databricks/pipeline/notebooks/01_preparacao.ipynb)
+## Environment Preparation: [01_preparation](.databricks/pipeline/notebooks/01_preparation.ipynb)
 
 The preparation script creates and/or recreates the catalog and schemas, ensuring a clean environment for pipeline execution.
 Before creating them, the process drops (when existing) the catalog and its schemas, avoiding leftovers from previous runs that could impact data consistency.
@@ -176,7 +176,7 @@ The project scripts are organized sequentially, allowing manual execution or orc
 
 | Order | Script | Description |
 | :-- | :-- | :-- |
-| 1 | `./.databricks/pipeline/notebooks/01_preparacao.ipynb` | Creation of the `100cep_gateway` catalog and the `staging`, `bronze`, `silver` and `gold` schemas. |
+| 1 | `./.databricks/pipeline/notebooks/01_preparation.ipynb` | Creation of the `100cep_gateway` catalog and the `staging`, `bronze`, `silver` and `gold` schemas. |
 | 2 | `./.databricks/pipeline/notebooks/02_download.ipynb` | Volume creation, download via `kagglehub` and copy of CSVs to the staging volume. |
 | 3 | `./.databricks/pipeline/notebooks/03_bronze.ipynb` | Ingestion of CSVs into `*_raw` Delta tables in the Bronze layer. |
 | 4 | `./.databricks/pipeline/notebooks/04_silver.ipynb` | Cleaning, standardization, enrichment and creation of thematic Silver tables. |
